@@ -18,11 +18,11 @@ From these two bases, you can fork your custom 'trafex/php-nginx'. You only have
   from '/var/www/html' to '/var/www', to name the volume 'www' instead of 'html'. The names of the last folder in the root directory of the public 
   web server and the name of the volume 'must match'.
 
-			________________________    ___name-volume method__         ____bind-volume method_______
-			    Mount using -v			    my-volume:/usr/local/www         /path/to/data:/usr/local/www
-										             ______www:/var/www_______        ___"$(pwd)":/usr/local/www___
-										              must match www:/-->/www            make sure: folders host
-										              change your Dockerfile     		         are read&write
+			________________________    _____name-volume method____    ____bind-volume method_______
+			    Mount using -v			  my-volume:/usr/local/www      /path/to/data:/usr/local/www
+										 ______www:/var/www_______     ___"$(pwd)":/usr/local/www___
+										  must match www:/-->/www        make sure: folders host
+										   change your Dockerfile     		 are read&write
                                   
 My goal is to develop an application whose products can be accessed from outside of Docker. Although this leads to security risks that are not present 
 when products are isolated in Docker via a name-volume, these are reduced by running 'trafex/php-nginx' under the domain of group and owner 'nobody'. The 
@@ -33,12 +33,12 @@ Steps
 0. App directory root containing our App files containing at least one file for verifyinf porpouese, in my case this is the 'none.php' file.
 		for example:
 			user@host:~/folder1/folder2$ cat none.php > /dev/null;echo $?
-      0
+      		0
       
 1. With the cursor located at the root of the directory tree provided by 'github.com/Trafex/docker-php-nginx.git' (or the uncompressed option of your 
 download zip):
 		user@host:~/docker-php-nginx.git-Folder$ sudo docker build -t [forked-image-name:1.0] .	
-    		-t:						        option to name the built
+    	-t:						option to name the built
         [forked_image-name]:	user desired name 'without brackets'
         
     #to verify that the forked_image has been created:
@@ -46,11 +46,11 @@ download zip):
     
 			REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
 			forked-image-name          1.0                 646de31f942b        12 hours ago        133MB
-			_____forked-image-name (with tag)_____		   __________________features___________________
+			_____forked-image-name (with tag)_____		__________________features___________________
 
 		#creating a volume
-      user@host:~/docker-php-nginx.git-Folder$ sudo docker volume create www	
-    #to verify that the 'www volume' has been created:
+      	user@host:~/docker-php-nginx.git-Folder$ sudo docker volume create www	
+    		#to verify that the 'www volume' has been created:
 			user@host:~/docker-php-nginx.git-Folder$ sudo docker volume -ls
 				user@host:~/fdocker-php-nginx.git-Folder$
         
@@ -83,5 +83,3 @@ There are still some annoyances. Files created by the app will acquire the user,
 you can, only exceptionally in a development context, grant them permissions as high as 777.
 
 And That's All Folks!
-
-
