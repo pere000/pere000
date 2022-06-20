@@ -1,1 +1,87 @@
-Oop! .. I'm still creating the file ...
+Sources:
+
+sudo https://github.com/TrafeX/docker-php-nginx.git
+	Base directory tree to build a copy of 'trafex/php-nginx' (docker pull trafex/php-nginx). It is hre where I make the changes in the Dockerfile and the 
+  nginx.conf files. You must compare these original files with the forked ones.
+  
+sudo docker pull trafex/php-nginx
+	Image container to run a webserver implemented with:
+		Alpine	(Operative System)
+		Nginx	(Web Server)
+			PHP-FPM	(Scripting language for Server Side purposes)
+
+From these two bases, you can fork your custom 'trafex/php-nginx'. You only have to apply the command tools suplied, in the case of Linux OS, by
+'https://docs.docker.com/desktop/linux/install/'.
+  
+  Due to the fact that in my developments for localhost domains I have encountered headaches when handling the 'name-volume' method and the 'bind-volume' 
+  method, that is why I must publish the following notes. Besides adding Bash to the original, I shorted the public webserver directory root, 
+  from '/var/www/html' to '/var/www', to name the volume 'www' instead of 'html'. The names of the last folder in the root directory of the public 
+  web server and the name of the volume 'must match'.
+
+			________________________    ___name-volume method__         ____bind-volume method_______
+			    Mount using -v			    my-volume:/usr/local/www         /path/to/data:/usr/local/www
+										             ______www:/var/www_______        ___"$(pwd)":/usr/local/www___
+										              must match www:/-->/www            make sure: folders host
+										              change your Dockerfile     		         are read&write
+                                  
+My goal is to develop an application whose products can be accessed from outside of Docker. Although this leads to security risks that are not present 
+when products are isolated in Docker via a name-volume, these are reduced by running 'trafex/php-nginx' under the domain of group and owner 'nobody'. The 
+would-be attacker will have to get superuser privileges to read, move, or write files, and then his security risk is no greater than that of any file on 
+the host.
+
+Steps
+0. App directory root containing our App files containing at least one file for verifyinf porpouese, in my case this is the 'none.php' file.
+		for example:
+			user@host:~/folder1/folder2$ cat none.php > /dev/null;echo $?
+      0
+      
+1. With the cursor located at the root of the directory tree provided by 'github.com/Trafex/docker-php-nginx.git' (or the uncompressed option of your 
+download zip):
+		user@host:~/docker-php-nginx.git-Folder$ sudo docker build -t [forked-image-name:1.0] .	
+    		-t:						        option to name the built
+        [forked_image-name]:	user desired name 'without brackets'
+        
+    #to verify that the forked_image has been created:
+ 		user@host:~/docker-php-nginx.git-Folder$ sudo docker image ls
+    
+			REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
+			forked-image-name          1.0                 646de31f942b        12 hours ago        133MB
+			_____forked-image-name (with tag)_____		   __________________features___________________
+
+		#creating a volume
+      user@host:~/docker-php-nginx.git-Folder$ sudo docker volume create www	
+    #to verify that the 'www volume' has been created:
+			user@host:~/docker-php-nginx.git-Folder$ sudo docker volume -ls
+				user@host:~/fdocker-php-nginx.git-Folder$
+        
+				DRIVER              VOLUME NAME
+				local               www
+
+2. We choose 'www' as volume name because the public webserver directory root given by the Dockerfile is '/var/www'. The 'last folder' of our  localhost App 
+must 'match': www:/-->/www when we run the docker server over the host App. Now, with the cursor located at the root of the App directory root tree:
+
+  user@host:~/folder1/folder2$ sudo docker run -dp 80:8080 -v www:/var/www forked-image-name:1.0
+
+		If the execution was successful, there will be no error message and the process identification number will be displayed. In that case, the application 
+    should be accessible from the browser at http://localhost/index.html There are several issues to mention here:
+
+			1. if you access to the bash command line inside the container and add a text file, you will add that file into the volume, and not into the 
+      'host App	folder',	so that file will not be displayed in that host folder. Your data is hijacked by that volume and you are tied to the existence 
+      of that volume. To go into the container execute:
+
+				user@host:~/folder1/folder2$ sudo docker exec -ti -entrypoint forked-image-name:1.0 bash
+
+			2. if you edit some application file, for esample, 'index.html', change its content, and rewrite it, it won't check for that change via the browser's display at
+			localhost/index.html You must stop and restart the forked-image-name:1.0 image container to verify the change in the index.html file.
+
+3. We need to use the 'bind-volume method' instead of the 'name-volume method' to overcome this limitation. So we remove the proccess, image, and volume, 
+and use the 'bind-volume method'. Now we don't need any volume because the App products are written directly in the host folders:
+
+		user@host:~/folder1/folder2$ sudo docker run --name=ForkedImageName -dp 80:8080 -v "$(pwd)":/var/www forked-image-name:1.0
+    
+There are still some annoyances. Files created by the app will acquire the user, group, and permissions of the 'nobody' user in the 'nobody' group. But 
+you can, only exceptionally in a development context, grant them permissions as high as 777.
+
+And That's All Folks!
+
+
