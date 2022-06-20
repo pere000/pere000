@@ -24,13 +24,13 @@ My goal is to develop an application whose products can be accessed from outside
 Steps
 0. App directory root containing our App files containing at least one file for verifyinf porpouese, in my case this is the 'none.php' file.
 		for example:
-			user@host:~/folder1/folder2$ cat none.php > /dev/null;echo $?
+		user@host:~/folder1/folder2$ cat none.php > /dev/null;echo $?
       		0
 
 1. With the cursor located at the root of the directory tree provided by 'github.com/Trafex/docker-php-nginx.git' (or the uncompressed option of your download zip):
 
 		user@host:~/docker-php-nginx.git-Folder$ sudo docker build -t [forked-image-name:1.0] .
-    	-t:						option to name the built
+    	-t:			option to name the built
         [forked_image-name]:	user desired name 'without brackets'
 
     #to verify that the forked_image has been created:
