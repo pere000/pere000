@@ -30,15 +30,16 @@ would-be attacker will have to get superuser privileges to read, move, or write 
 the host.
 
 Steps
-0. App directory root containing our App files containing at least one file for verifying purposes, in my case, this is the 'none.php' file.
-		for example:
-		user@host:~/folder1/folder2$ cat none.php > /dev/null;echo $?
-      		0
+0. App directory root containing our App files containing at least one file for verifying purposes, in my case, this is the 'none.php' file. For example:
+
+	user@host:~/folder1/folder2$ cat none.php > /dev/null;echo $?
+      	0
 
 1. With the cursor located at the root of the directory tree provided by 'github.com/Trafex/docker-php-nginx.git' (or the uncompressed option of your
 download zip):
 
-		user@host:~/docker-php-nginx.git-Folder$ sudo docker build -t [forked-image-name:1.0] .
+	user@host:~/docker-php-nginx.git-Folder$ sudo docker build -t [forked-image-name:1.0] .
+	
     	-t:			option to name the built
         [forked_image-name]:	user desired name 'without brackets'
 
@@ -50,10 +51,10 @@ download zip):
 			_____forked-image-name (with tag)_____	       __________________features___________________
 
 		#creating a volume
-      	user@host:~/docker-php-nginx.git-Folder$ sudo docker volume create www
+      	            user@host:~/docker-php-nginx.git-Folder$ sudo docker volume create www
     		#to verify that the 'www volume' has been created:
-			user@host:~/docker-php-nginx.git-Folder$ sudo docker volume -ls
-				user@host:~/fdocker-php-nginx.git-Folder$
+	            user@host:~/docker-php-nginx.git-Folder$ sudo docker volume -ls
+		    user@host:~/fdocker-php-nginx.git-Folder$
 
 				DRIVER              VOLUME NAME
 				local               www
@@ -61,7 +62,7 @@ download zip):
 2. We choose 'www' as volume name because the public webserver directory root given by the Dockerfile is '/var/www'. The 'last folder' of our  localhost
 App must 'match': www:/-->/www when we run the docker server over the host App. Now, with the cursor located at the root of the App directory root tree:
 
-  user@host:~/folder1/folder2$ sudo docker run -dp 80:8080 -v www:/var/www forked-image-name:1.0
+        user@host:~/folder1/folder2$ sudo docker run -dp 80:8080 -v www:/var/www forked-image-name:1.0
 
 If the execution was successful, there will be no error message and the process identification number will be displayed. In that case, the application
 should be accessible from the browser at http://localhost/index.html There are several issues to mention here:
@@ -78,7 +79,7 @@ display at localhost/index.html You must stop and restart the forked-image-name:
 3. We need to use the 'bind-volume method' instead of the 'name-volume method' to overcome this limitation. So we remove the proccess, image, and volume,
 and use the 'bind-volume method'. Now we don't need any volume because the App products are written directly in the host folders:
 
-		user@host:~/folder1/folder2$ sudo docker run --name=ForkedImageName -dp 80:8080 -v "$(pwd)":/var/www forked-image-name:1.0
+	user@host:~/folder1/folder2$ sudo docker run --name=ForkedImageName -dp 80:8080 -v "$(pwd)":/var/www forked-image-name:1.0
 
 There are still some annoyances. Files created by the app will acquire the user, group, and permissions of the 'nobody' user in the 'nobody' group. But
 you can, only exceptionally in a development context, grant them permissions as high as 777.
