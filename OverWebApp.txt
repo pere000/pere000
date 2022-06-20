@@ -26,7 +26,7 @@ and the name of the volume 'must match'.
 
 My goal is to develop an application whose products can be accessed from outside of Docker. Although this leads to security risks that are not present
 when products are isolated in Docker via a name-volume, these are reduced by running 'trafex/php-nginx' under the domain of group and owner 'nobody'. The
-would-be attacker will have to get superuser privileges to read, move, or write files, and then his security risk is no greater than that of any file on
+would-be attacker will have to get superuser privileges to read, move, or write files, and then its security risk is no greater than that of any file on
 the host.
 
 Steps
