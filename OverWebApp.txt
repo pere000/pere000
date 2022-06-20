@@ -1,7 +1,7 @@
 Sources:
 
 sudo https://github.com/TrafeX/docker-php-nginx.git
-	Base directory tree to build a copy of 'trafex/php-nginx' (docker pull trafex/php-nginx). It is hre where I make the changes in the Dockerfile and the nginx.conf files. You must compare these original files with the forked ones.
+Base directory tree to build a copy of 'trafex/php-nginx' (docker pull trafex/php-nginx). It is hre where I make the changes in the Dockerfile and the nginx.conf files. You must compare these original files with the forked ones.
 
 sudo docker pull trafex/php-nginx
 	Image container to run a webserver implemented with:
@@ -11,7 +11,7 @@ sudo docker pull trafex/php-nginx
 
 From these two bases, you can fork your custom 'trafex/php-nginx'. You only have to apply the command tools suplied, in the case of Linux OS, by 'https://docs.docker.com/desktop/linux/install/'.
 
-  Due to the fact that in my developments for localhost domains I have encountered headaches when handling the 'name-volume' method and the 'bind-volume' method, that is why I must publish the following notes. Besides adding Bash to the original, I shorted the public webserver directory root, from '/var/www/html' to '/var/www', to name the volume 'www' instead of 'html'. The names of the last folder in the root directory of the public   web server and the name of the volume 'must match'.
+Due to the fact that in my developments for localhost domains I have encountered headaches when handling the 'name-volume' method and the 'bind-volume' method, that is why I must publish the following notes. Besides adding Bash to the original, I shorted the public webserver directory root, from '/var/www/html' to '/var/www', to name the volume 'www' instead of 'html'. The names of the last folder in the root directory of the public   web server and the name of the volume 'must match'.
 
 			________________________    _____name-volume method____    ____bind-volume method_______
 			    Mount using -v	      my-volume:/usr/local/www      /path/to/data:/usr/local/www
