@@ -30,7 +30,7 @@ would-be attacker will have to get superuser privileges to read, move, or write 
 the host.
 
 Steps
-0. App directory root containing our App files containing at least one file for verifyinf porpouese, in my case this is the 'none.php' file.
+0. App directory root containing our App files containing at least one file for verifying purposes, in my case, this is the 'none.php' file.
 		for example:
 		user@host:~/folder1/folder2$ cat none.php > /dev/null;echo $?
       		0
