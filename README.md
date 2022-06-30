@@ -1,6 +1,5 @@
 ### Hi there 👋
 
-<!--
 Fork based on the original work from "Tim de Pater <code@trafex.nl>" at https://hub.docker.com/r/trafex/php-nginx.
 
 Although the porpouse of Mr. Tim de Pater is to keep his original trafex/php-nginx 'as simple as possible', we have added 'Bash GNU Shell' to his 
@@ -22,4 +21,4 @@ Let us suppose you have run 'sudo docker pull perevictor/fffwebapp' and have suc
 sudo docker run --name=ArbitraryTag -dp 80:8080 fffwebapp:latest you can access the server at http://localhost/index.html. 
 The index.html page will show you how to use fffwebapp:latest to work with any directory containing an HTML-PHP-Javascript-Bash application for 
 localhost (127.0.0.1).
--->
+
