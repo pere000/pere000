@@ -105,7 +105,7 @@ Assuming you have Docker installed, run 'build':
 
 ~/Downloads/docker/docker-php-nginx-master$ sudo docker build -t custom-php-nginx1 . 
 
-Notice that the 'space and dot' at the end of the above command is 'more code'. Now that you have your 'Great Tool', select some folder of HTML-CSS-Javascript-PHP-GNU commnad scripts placed, inside a 'www folder', in your Desktop file system. Open a command line in the 'www folder' and 'run' your 'Great Tool': 
+Notice that the 'space and dot' at the end of the above command is 'more code'. Now that you have your 'Great Tool', select some folder of HTML-CSS-Javascript-PHP-GNU command scripts placed, inside a 'www folder', in your Desktop file system. Open a command line in the 'www folder' and 'run' your 'Great Tool': 
 
 ~/Documents/www$ sudo docker run --name greattool -dp 8080:8080 -v "$(pwd)":/var/www custom-php-nginx1
 
