@@ -55,32 +55,32 @@ RUN apk add --no-cache \
     sed \
     ttf-freefont
 
-# Configure Nginx, PHP-FPM, and supervisord (as per your application needs)
+##Configure Nginx, PHP-FPM, and supervisord (as per your application needs)
 COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY config/fpm-pool.conf /etc/php83/php-fpm.d/www.conf
 COPY config/php.ini /etc/php83/conf.d/custom.ini
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Make directories and set permissions
+##Make directories and set permissions
 RUN mkdir -p /var/www && \
     chown -R nobody:nobody /var/www /run /var/lib/nginx /var/log/nginx
 
-# Create a symbolic link for PHP
+##Create a symbolic link for PHP
 RUN ln -s /usr/bin/php83 /usr/bin/php
 
-# Switch to the 'nobody' user for security reasons
+##Switch to the 'nobody' user for security reasons
 USER nobody
 
-# Copy your application code into the container
+##Copy your application code into the container
 COPY --chown=nobody src/ /var/www/
 
-# Expose the port used by Nginx
+##Expose the port used by Nginx
 EXPOSE 8080
 
-# Start supervisord to manage Nginx and PHP-FPM
+##Start supervisord to manage Nginx and PHP-FPM
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
-# Health check for the container
+##Health check for the container
 HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping || exit 1
 
 Assuming you have Docker installed, run 'build': ~/Downloads/docker/docker-php-nginx-master$ sudo docker build -t custom-php-nginx1 . Notice that the 'space and dot' at the end of the above command is 'more code'. Now that you have your 'Great Tool', select some folder of HTML-CSS-Javascript-PHP-GNU commnad scripts placed, inside a 'www folder', in your Desktop file system. Open a command line in the 'www folder' and 'run' your 'Great Tool': ~/Documents/www$ sudo docker run --name greattool -dp 8080:8080 -v "$(pwd)":/var/www custom-php-nginx1
