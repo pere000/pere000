@@ -95,23 +95,15 @@ CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
 HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping || exit 1
 
-Assuming you have Docker installed, run 'build': ~/Downloads/docker/docker-php-nginx-master$ sudo docker build -t custom-php-nginx1 . Notice that the 'space and dot' at the end of the above command is 'more code'. Now that you have your 'Great Tool', select some folder of HTML-CSS-Javascript-PHP-GNU commnad scripts placed, inside a 'www folder', in your Desktop file system. Open a command line in the 'www folder' and 'run' your 'Great Tool': ~/Documents/www$ sudo docker run --name greattool -dp 8080:8080 -v "$(pwd)":/var/www custom-php-nginx1
+Assuming you have Docker installed, run 'build': 
+
+~/Downloads/docker/docker-php-nginx-master$ sudo docker build -t custom-php-nginx1 . 
+
+Notice that the 'space and dot' at the end of the above command is 'more code'. Now that you have your 'Great Tool', select some folder of HTML-CSS-Javascript-PHP-GNU commnad scripts placed, inside a 'www folder', in your Desktop file system. Open a command line in the 'www folder' and 'run' your 'Great Tool': 
+
+~/Documents/www$ sudo docker run --name greattool -dp 8080:8080 -v "$(pwd)":/var/www custom-php-nginx1
 
 If you place an index.html or index.php file in the 'www' folder, your browser will display its contents at 'http://localhost:8080/'. You can modify the file contents, filenames, delete (rm *), and add (cp * www) files, etc. in any folder, and those changes will be reflected in the browser when you refresh the page. From another perspective, by using the PHP built-in server, instead of a container, your scripts have the potential to access all directories within your file system, enabling you to manage files and services directly from your browser.
 
 
-
-
-
-
-
-
-
-
-
-
-that place
-
-
-under construction ...
 
