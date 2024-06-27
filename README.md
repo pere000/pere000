@@ -18,7 +18,7 @@ create your own derivative with Mr. Tim Pater's original at https://github.com/T
 your Dockerfile, the corresponding codes in 'nginx.conf', and other files.
 
 Let us suppose you have run 'sudo docker pull perevictor/fffwebapp' and have succeeded. After also running: 
-sudo docker run --name=ArbitraryTag -dp 80:8080 fffwebapp:latest you can access the server at http://localhost/index.html. 
+sudo docker run --name=ArbitraryTag -dp 80:8080 perevictor/fffwebapp:latest you can access the server at http://localhost/index.html. 
 The index.html page will show you how to use fffwebapp:latest to work with any directory containing an HTML-PHP-Javascript-Bash application for 
 localhost (127.0.0.1).
  
