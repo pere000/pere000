@@ -56,6 +56,7 @@ RUN apk add --no-cache \
     ttf-freefont
 
 ##Configure Nginx, PHP-FPM, and supervisord (as per your application needs)
+
 COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY config/fpm-pool.conf /etc/php83/php-fpm.d/www.conf
 COPY config/php.ini /etc/php83/conf.d/custom.ini
