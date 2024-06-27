@@ -17,7 +17,6 @@ We shortened the WORKDIR from /var/www/html to /var/www, and added
 You only need to download the original from 'Tim de Pater': https://github.com/TrafeX/docker-php-nginx. Then change its Dockerfile by the following: 
 
 ARG ALPINE_VERSION=3.19
-
 FROM alpine:${ALPINE_VERSION}
 
 LABEL Maintainer="Your Name <your@email.com>"
