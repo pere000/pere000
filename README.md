@@ -69,7 +69,7 @@ COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN mkdir -p /var/www && \
 
-    chown -R nobody:nobody /var/www /run /var/lib/nginx /var/log/nginx
+chown -R nobody:nobody /var/www /run /var/lib/nginx /var/log/nginx
 
 ##Create a symbolic link for PHP
 
@@ -94,6 +94,8 @@ CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 ##Health check for the container
 
 HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping || exit 1
+
+
 
 Assuming you have Docker installed, run 'build': 
 
