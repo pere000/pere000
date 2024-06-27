@@ -24,7 +24,7 @@ LABEL Maintainer="Your Name <your@email.com>"
 
 LABEL Description="Docker container with Nginx, PHP, and Chrome browser based on Alpine Linux."
 
-# Install necessary packages
+##Install necessary packages
 RUN apk add --no-cache \
     curl \
     nginx \
