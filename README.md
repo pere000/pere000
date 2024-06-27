@@ -97,6 +97,8 @@ HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-pin
 
 
 ..................................................................
+
+
 Assuming you have Docker installed, run 'build': 
 
 ~/Downloads/docker/docker-php-nginx-master$ sudo docker build -t custom-php-nginx1 . 
