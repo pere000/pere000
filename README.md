@@ -86,4 +86,4 @@ Assuming you have Docker installed, follow these steps:
 Build the Docker Image:
 Run the following command in the directory containing your modified Dockerfile:
 
-    ~/Downloads/docker/docker-php-nginx-master$ sudo docker build -t custom-php-nginx1 .
+   # ~/Downloads/docker/docker-php-nginx-master$ sudo docker build -t custom-php-nginx1 .
