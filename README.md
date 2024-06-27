@@ -111,5 +111,5 @@ Notice that the 'space and dot' at the end of the above command is 'more code'. 
 
 If you place an index.html or index.php file in the 'www' folder, your browser will display its contents at 'http://localhost:8080/'. You can modify the file contents, filenames, delete (rm *), and add (cp * www) files, etc. in any folder, and those changes will be reflected in the browser when you refresh the page. From another perspective, by using the PHP built-in server, instead of a container, your scripts have the potential to access all directories within your file system, enabling you to manage files and services directly from your browser.
 
-
+In any case, you can use my 'Great Tool': sudo docker pull perevictor/nginx-php-bash:latest
 
