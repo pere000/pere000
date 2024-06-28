@@ -92,6 +92,7 @@ Run the following command in the directory containing your Dockerfile with the a
 
     ~/Downloads/docker/docker-php-nginx-master$ sudo docker build -t custom-php-bash-nginx .
     (Note the space and period at the end of the command, they are also code)
+
 # Run Your Container:
 Navigate to your project directory (www folder = required) and execute:
 
