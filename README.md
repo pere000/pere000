@@ -4,7 +4,7 @@ Hi there! 👋 This Docker image is derived from the original work by [Tim de Pa
 
 ## Dockerfile Modifications
 
-To integrate additional scripting languages like Python into the Dockerfile, follow these steps:
+To integrate additional scripting languages like Python into the App you have to add it to this Dockerfile:
 
 ```dockerfile
 ARG ALPINE_VERSION=3.19
@@ -83,11 +83,12 @@ If you place an index.html or index.php file in the 'www' folder, your browser w
 
 In any case, you can use my 'Great Tool': sudo docker pull perevictor/nginx-php-bash:latest
 
+............................... Add Python or any other tool
 # Getting Started
 Assuming you have Docker installed, follow these steps:
 
-# Build the Docker Image:
-Run the following command in the directory containing your Dockerfile:
+# Build your own Docker Image, with Python if you want:
+Run the following command in the directory containing your Dockerfile with the added code to the above Dockerfile (Ask to chatGPT):
 
     ~/Downloads/docker/docker-php-nginx-master$ sudo docker build -t custom-php-bash-nginx .
 
