@@ -72,18 +72,39 @@ CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
 # Health check for the container
 HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping || exit 1
-Open a command line in the 'www folder' and 'run' your 'Great Tool': 
+.........................................................
+#
+.........................................................
+# Open a command line in the 'www folder' and 'run' your 'Great Tool': 
 
-~/Documents/www$ sudo docker run --name greattool -dp 8080:8080 -v "$(pwd)":/var/www custom-php-nginx1
+~/Documents/www$ sudo docker run --name greattool -dp 8080:8080 -v "$(pwd)":/var/www custom-php-bash-nginx
 
 If you place an index.html or index.php file in the 'www' folder, your browser will display its contents at 'http://localhost:8080/'. You can modify the file contents, filenames, delete (rm *), and add (cp * www) files, etc. in any folder, and those changes will be reflected in the browser when you refresh the page. From another perspective, by using the PHP built-in server, instead of a container, your scripts have the potential to access all directories within your file system, enabling you to manage files and services directly from your browser.
 
 In any case, you can use my 'Great Tool': sudo docker pull perevictor/nginx-php-bash:latest
 
-Getting Started
+# Getting Started
 Assuming you have Docker installed, follow these steps:
 
-Build the Docker Image:
-Run the following command in the directory containing your modified Dockerfile:
+# Build the Docker Image:
+Run the following command in the directory containing your Dockerfile:
 
-    ~/Downloads/docker/docker-php-nginx-master$ sudo docker build -t custom-php-nginx1 .
+    ~/Downloads/docker/docker-php-nginx-master$ sudo docker build -t custom-php-bash-nginx .
+
+# Run Your Container:
+Navigate to your project directory (www folder = required) and execute:
+
+    ~/Documents/www$ sudo docker run --name greattool -dp 8080:8080 -v "$(pwd)":/var/www custom-php-nginx
+
+# Access Your Application:
+If you have an index.html or index.php file in the www folder, open your browser and go to:
+
+    http://localhost:8080/
+
+You can modify files in any folder, delete (rm *), and add (cp * www) files, and those changes will be reflected in the browser upon refresh. Alternatively, using the PHP built-in server instead of a container allows your scripts to access all directories within your file system, providing direct management of files and services from your browser.
+
+To use my Docker image, simply pull it from Docker Hub:
+
+    sudo docker pull perevictor/nginx-php-bash:latest
+
+Enjoy developing your web applications with ease using my custom Docker image!
