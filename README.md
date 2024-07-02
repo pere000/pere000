@@ -106,7 +106,7 @@ If you have an index.html or index.php file in the www folder, open your browser
 To use my Docker image, simply pull it from Docker Hub: sudo docker pull perevictor/nginx-php-bash:latest
 
 ## Troubleshouting
-When using this Dockerfile, note that due to Nginx's configuration, your application may encounter issues creating files using commands like touch or echo 'dadada' > filename. This is typically due to permissions settings within the Nginx environment, which I have not yet resolved.
+When using this Dockerfile, note that due to Nginx configuration, your application may encounter issues creating files using commands like touch or echo 'dadada' > filename. This is typically due to permissions settings within the Nginx environment, which I have not yet resolved.
 
 To avoid this problem, there are two solutions: 1. use perevictor/alpinedrakkar-php-bash_commands0 (39.77 MB) or 2. perevictor/alpinedrakkar-php-mariadb-bash_commands0 (107.29 MB) if you want to make MariaDB available.
 
