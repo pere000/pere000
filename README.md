@@ -92,7 +92,7 @@ In any case, you can use my 'Great Tool': sudo docker pull perevictor/nginx-php-
 # Getting Started
 Assuming you have Docker installed, follow these steps:
 
-# Build your own Docker Image, with Python if you want:
+# Build your own Docker Image:
 Run the following command in the directory containing your Dockerfile with the added code to the above Dockerfile (Ask to chatGPT):
 
     ~/Downloads/docker/docker-php-nginx-master$ sudo docker build -t custom-php-bash-nginx .
