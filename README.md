@@ -2,6 +2,8 @@
 
 Hi there! 👋 This Docker image is derived from the original work by [Tim de Pater](https://hub.docker.com/r/trafex/php-nginx). While Tim de Pater aims to keep his `trafex/php-nginx` as simple as possible, we have extended it to include Bash GNU Shell, adding approximately 300 MB to enable more convenient development of web applications using GNU scripting alongside PHP tasks.
 
+Due to permission settings within the Nginx environment, which I haven't figured out yet, you can't create files, i.e. using touch, echo 'dadada' > filename.txt, etc. You can take a look at the 'Troubleshooting Section' for alternatives.
+
 ## Dockerfile Modifications
 
 To integrate additional scripting languages like Python into the App you have to add it to this Dockerfile:
