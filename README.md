@@ -88,7 +88,7 @@ If you place an index.html or index.php file in the 'www' folder, your browser w
 
 In any case, you can use my 'Great Tool': sudo docker pull perevictor/nginx-php-bash:latest
 
-............................... Add Python or any other tool
+...............................
 # Getting Started
 Assuming you have Docker installed, follow these steps:
 
