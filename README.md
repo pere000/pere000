@@ -45,6 +45,9 @@ RUN apk add --no-cache \
     sed \
     ttf-freefont
 
+# Ensure awk points to gawk
+RUN ln -sf /usr/bin/gawk /usr/bin/awk
+
 # Configure Nginx, PHP-FPM, and supervisord (as per your application needs)
 COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY config/fpm-pool.conf /etc/php83/php-fpm.d/www.conf
