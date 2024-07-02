@@ -103,10 +103,13 @@ If you have an index.html or index.php file in the www folder, open your browser
 
     http://localhost:8080/
 
-You can modify files in any folder, delete (rm *), and add (cp * www) files, and those changes will be reflected in the browser upon refresh. Alternatively, using the PHP built-in server instead of a container allows your scripts to access all directories within your file system, providing direct management of files and services from your browser.
+To use my Docker image, simply pull it from Docker Hub: sudo docker pull perevictor/nginx-php-bash:latest
 
-To use my Docker image, simply pull it from Docker Hub:
+## Troubleshouting
+When using this Dockerfile, note that due to Nginx's configuration, your application may encounter issues creating files using commands like touch or echo 'dadada' > filename. This is typically due to permissions settings within the Nginx environment, which I have not yet resolved.
 
-    sudo docker pull perevictor/nginx-php-bash:latest
+To avoid this problem, there are two solutions: 1. use perevictor/alpinedrakkar-php-bash_commands0 (39.77 MB) or 2. perevictor/alpinedrakkar-php-mariadb-bash_commands0 (107.29 MB) if you want to make MariaDB available.
+
+This 'sudo docker run --name runtest1 -dp 8080:80 -v "$(pwd)":/var/www perevictor/alpinedrakkar-php-bash_commands0', to run a PHP-CSS-Javascript-Bash_commands 'Locahost Web App', allows your bash scripts to create files and change permissions. Alternatively, using the built-in PHP server instead of a container avoids that problem as well. 
 
 Enjoy developing your web applications with ease using my custom Docker image!
